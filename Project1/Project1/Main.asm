@@ -6,10 +6,10 @@
 	extern _ReadConsoleA@20:near
 
 .data
-	number1 dword '10'
-	number2 dword '20'
-	number3 dword '30'
-	number4 dword '40'
+	number1 dword 10
+	number2 dword 20
+	number3 dword 30
+	number4 dword 40
 	handle dword ?
 	written dword ?
 
