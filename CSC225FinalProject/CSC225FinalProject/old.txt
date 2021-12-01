@@ -1,0 +1,38 @@
+.386P
+
+.model flat
+	extern itoa:near
+	extern atoi:near
+	extern readline:near
+	extern writeline:near
+	extern _ExitProcess@4:near
+.data
+
+	number2 dword ?
+	number1 dword ?
+	string1 db "Enter number 1: ", 10, 13, 0
+	string2 db "Enter number 2: ", 10, 13, 0
+	string3 db "The multiplication result is: ", 10, 13, 0
+
+	handle dword ?
+	output dword ?
+.code
+	main PROC near
+	_main:
+	push offset string1
+	call writeline
+	;call readline
+	mov number1, eax
+
+	mov edx, offset string2
+	call writeline
+	;call readline
+	mov number2, eax
+
+	mov eax, number1
+	add eax, number2
+
+	mov edx, offset string3
+		
+	main ENDP
+END
