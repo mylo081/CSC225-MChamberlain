@@ -8,12 +8,13 @@
 	extern _ExitProcess@4:near
 	buffsize = 80
 .data
-	input byte buffsize DUP(?),0,0
+	input byte buffsize DUP(00h)
+	finalnum byte buffsize DUP(00h)
 	number1 dd ?
 	number2 dd ?
-	string1 db "Enter number 1: ",0
-	string2 db "Enter number 2: ",0
-	string3 db "The multiplication result is: ",0
+	string1 db "Enter number 1: ",10
+	string2 db "Enter number 2: ",10
+	string3 db "The multiplication result is: ",10
 	output dword ?
 .code
 	main PROC near
@@ -40,10 +41,14 @@
 	mul [number2]
 
 	push eax
-	push offset input		;NOT AN INPUT ANYMORE, IS NUMBER
+	push offset finalnum		;NOT AN INPUT ANYMORE, IS empty NUMBER
 	call itoa 
+	mov output, eax
 
-	push offset input
+	push offset string3
+	call writeline
+
+	push [output]
 	call writeline
 
 	push 6

@@ -7,62 +7,26 @@
     itoa PROC near
 	_itoa:
 	pop esi
-	pop ecx	;this is emp T string
+	pop ecx	;this is empty string address
 	pop eax	;this is num
 	push esi
-	mov esi, 0
 	push ebx
 	mov ebx, ecx
+	add ecx, 80
+	mov edi, 10
+	mov [ecx], edi
 
 	_loop_start:
 	mov edx, 0
 	div [divnum]
 	add edx, 48
+	dec ecx
 	mov [ecx], dl
-	inc ecx
-	inc esi
 	cmp eax, 0
-	jz _loop_end
-	jmp _loop_start
+	jg _loop_start
 
-	_loop_end:
-	mov eax, esi
-
-	_second_loop: ;bruh
-	cmp esi, 0
-	jz _end_end
-	dec esi
-
-
-
-
-
-
-
-
-
-
-
-	mov dl, [ebx]
-	mov bl, [ecx]
-	mov 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	jmp _second_loop
-
-	_end_end: ;ur joking
+	_reverse_end: ;ur joking
+	mov eax, ecx
 	pop ebx
 	ret
 

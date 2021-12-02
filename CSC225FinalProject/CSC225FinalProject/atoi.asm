@@ -8,7 +8,7 @@
 
 	_atoi:
 	pop edx		;ret address
-	pop ecx		;actual string							100
+	pop ecx		;actual string address
 	pop eax		;string size
 	push edx	;ret address putaway
 	push edi
@@ -18,7 +18,7 @@
 
 	mov esi, 0
 	_loop_start:
-	cmp esi, edi		;maybe - 2?
+	cmp esi, edi
 	jz _loop_end
 	mul mulnum
 	mov dl, [ecx]

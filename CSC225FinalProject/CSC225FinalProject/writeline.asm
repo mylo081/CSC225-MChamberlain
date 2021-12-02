@@ -22,11 +22,11 @@ writeline PROC near
     push    esi
     mov     esi, [ebp + 8]
     mov     edi, 0
-
+    mov     eax, 10
 _strlen_loop:
     mov     cl,    [esi]
-    cmp     cl, 0
-    jz     _strlen_end
+    cmp     al, cl
+    je     _strlen_end
     inc     esi
     inc     edi
     jmp     _strlen_loop
